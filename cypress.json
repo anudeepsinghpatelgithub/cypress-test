@@ -1,4 +1,6 @@
 {
   "integrationFolder": "./tests",
-  "reporter": "mochawesome"
+  "reporter": "mochawesome",
+  "pageLoadTimeout": 120000,
+  "defaultCommandTimeout": 30000
 }

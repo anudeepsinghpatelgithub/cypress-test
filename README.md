@@ -12,7 +12,7 @@ This repo contains e2e framework using cypress
 2. `cd cypress-test`
 3. `npm install`
 4. For headless mode: `num run test:ci`
-5. for now mode run `num run test`
+5. with browser mode run `num run test` and select the cypress window and run all tests.
 
 ## Reports:
 

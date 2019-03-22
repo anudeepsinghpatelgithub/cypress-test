@@ -6,7 +6,7 @@ const addEditFormat = 'YYYY-MM-DD';
 const displayFormat = 'DD MMM YYYY';
 const using = require('jasmine-data-provider');
 
-describe.skip('CRUD operations for computers with all valid details', () => {
+describe('CRUD operations for computers with all valid details', () => {
   // Create information
   const name = `computer-${new Date().getTime()}`;
   const computerPage = new ComputerPage();
@@ -95,7 +95,7 @@ describe.skip('CRUD operations for computers with all valid details', () => {
   });
 });
 
-describe.skip('Create computres only just providing name', () => {
+describe('Create computres only just providing name', () => {
   const computerPage = new ComputerPage();
   const newComputerPage = new NewComputersPage();
   const name = `computer-${new Date().getTime()}`;
@@ -118,7 +118,7 @@ describe.skip('Create computres only just providing name', () => {
   });
 });
 
-describe.skip(`Create computres with diffrent type of characters and 
+describe(`Create computres with diffrent type of characters and 
 should be able to select different companies`, () => {
   const computerPage = new ComputerPage();
   const newComputerPage = new NewComputersPage();
@@ -173,9 +173,9 @@ should be able to select different companies`, () => {
   });
 });
 
-describe.skip('Computer Search tests', () => {
+describe('Computer Search tests', () => {
   const name = `computer-${new Date().getTime()}`;
-  const name2 = `computer-${new Date().getTime()}2`;
+  const name2 = `${name}2`;
   const computerPage = new ComputerPage();
   const newComputerPage = new NewComputersPage();
   const introducedDate = moment(new Date(), addEditFormat).format(addEditFormat);

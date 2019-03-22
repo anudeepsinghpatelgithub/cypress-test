@@ -60,5 +60,19 @@ class ComputersPage {
       .parent()
       .should('have.class', 'headerSortDown');
   }
+
+  sortBy(name) {
+    cy.contains('a', name)
+      .parent()
+      .should('not.have.class', 'headerSortUp');
+    cy.contains('a', name).click();
+    cy.contains('a', name)
+      .parent()
+      .should('have.class', 'headerSortUp');
+    cy.contains('a', name).click();
+    cy.contains('a', name)
+      .parent()
+      .should('have.class', 'headerSortDown');
+  }
 }
 module.exports = ComputersPage;

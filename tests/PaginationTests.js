@@ -3,13 +3,9 @@ const NewComputersPage = require('../pages/NewComputersPage');
 const Constants = require('../helpers/Constants');
 const moment = require('moment');
 const addEditFormat = 'YYYY-MM-DD';
-const displayFormat = 'DD MMM YYYY';
-const using = require('jasmine-data-provider');
 
-describe('Sorting tests', () => {
+describe('Pagination tests', () => {
   const searchString = `computer-${new Date().getTime()}`;
-  const name = `${searchString}-1`;
-  const name2 = `${searchString}-2`;
   const computerPage = new ComputerPage();
   const newComputerPage = new NewComputersPage();
   const introducedDate = moment(new Date(), addEditFormat).format(addEditFormat);
@@ -17,10 +13,13 @@ describe('Sorting tests', () => {
     .add(1, 'years')
     .format(addEditFormat);
   const company = 'Apple Inc.';
-  const computers = [name, name2];
+  let computers = [];
+  for (let i = 1; i <= 15; i++) {
+    computers.push(`${searchString}-${i}`);
+  }
   before(function() {
     // Runs once before all tests in the block
-    // Create 2 computers
+    // Create 15 computers
     cy.visit(Constants.URL);
     computers.forEach(computer => {
       computerPage.clickOnAddComputerBtn();
@@ -43,57 +42,30 @@ describe('Sorting tests', () => {
     });
   });
 
-  it(`Sort by name`, () => {
+  it(`Page forward test i.e. next button`, () => {
     cy.visit(Constants.URL);
-
     computerPage
       .searchComputer(searchString)
       .getComputerName(searchString)
       .should('exist');
 
-    computerPage.sortByName();
-    computerPage.getAllComputerName().each($el => {
-      console.log(cy.wrap($el).invoke('text'));
-    });
-
-    // TODO: need to add validation for actual content is sorted or not.
+    computerPage
+      .prevBtnDisabled()
+      .verifyPaginationText('Displaying 1 to 10 of 15')
+      .clickOnNextBtn()
+      .verifyPaginationText('Displaying 11 to 15 of 5')
+      .prevBtnEnabled()
+      .urlShouldHave(`/computers?p=1&f=${searchString}`)
+      .nextBtnDisabled();
   });
-
-  it(`Sort by Introduced`, () => {
-    cy.visit(Constants.URL);
-
+  it(`Page previous test i.e. next button`, () => {
     computerPage
-      .searchComputer(searchString)
-      .getComputerName(searchString)
-      .should('exist');
-
-    computerPage.sortBy('Introduced');
-
-    // TODO: need to add validation for actual content is sorted or not.
-  });
-
-  it(`Sort by Discontinued`, () => {
-    cy.visit(Constants.URL);
-    computerPage
-      .searchComputer(searchString)
-      .getComputerName(searchString)
-      .should('exist');
-
-    computerPage.sortBy('Discontinued');
-
-    // TODO: need to add validation for actual content is sorted or not.
-  });
-
-  it(`Sort by Company`, () => {
-    cy.visit(Constants.URL);
-
-    computerPage
-      .searchComputer(searchString)
-      .getComputerName(searchString)
-      .should('exist');
-
-    computerPage.sortBy('Company');
-
-    // TODO: need to add validation for actual content is sorted or not.
+      .nextBtnDisabled()
+      .verifyPaginationText('Displaying 11 to 15 of 5')
+      .clickOnPrevBtn()
+      .verifyPaginationText('Displaying 1 to 10 of 15')
+      .nextBtnEnabled()
+      .urlShouldHave(`computers?f=${searchString}`)
+      .prevBtnDisabled();
   });
 });

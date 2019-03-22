@@ -74,5 +74,50 @@ class ComputersPage {
       .parent()
       .should('have.class', 'headerSortDown');
   }
+
+  prevBtnDisabled() {
+    cy.contains('a', '← Previous')
+      .parent()
+      .should('have.class', 'prev disabled');
+    return this;
+  }
+  prevBtnEnabled() {
+    cy.contains('a', '← Previous')
+      .parent()
+      .should('not.have.class', 'prev disabled');
+    return this;
+  }
+
+  verifyPaginationText(text) {
+    cy.contains('a', text).should('exist');
+    return this;
+  }
+
+  clickOnNextBtn() {
+    cy.contains('a', 'Next →').click();
+    return this;
+  }
+  clickOnPrevBtn() {
+    cy.contains('a', '← Previous').click();
+    return this;
+  }
+
+  urlShouldHave(partialUrl) {
+    cy.url().should('include', partialUrl);
+    return this;
+  }
+
+  nextBtnDisabled() {
+    cy.contains('a', 'Next →')
+      .parent()
+      .should('have.class', 'next disabled');
+    return this;
+  }
+  nextBtnEnabled() {
+    cy.contains('a', 'Next →')
+      .parent()
+      .should('not.have.class', 'next disabled');
+    return this;
+  }
 }
 module.exports = ComputersPage;

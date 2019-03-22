@@ -145,6 +145,10 @@ should be able to select different companies`, () => {
     german: {
       name: `Ä/ä, Ö/ö, Ü/ü${new Date().getTime()}`,
       company: 'Samsung Electronics'
+    },
+    specialChar: {
+      name: `#@!%&*(_)+${new Date().getTime()}`,
+      company: 'Samsung Electronics'
     }
   };
   // Running same tests multiple time with different data set

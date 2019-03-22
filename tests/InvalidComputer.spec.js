@@ -14,9 +14,21 @@ describe('Try to create computer with empty values and invalid date formats', ()
     newComputerPage.nameError().should('exist');
   });
 
-  it('Invalid introduced date format provided', () => {
+  it('Invalid introduced date provided', () => {
     // Create new computer
     newComputerPage.fillIntroduced('dddd').clickOnCreateThisComputerButton();
+    newComputerPage.introducedError().should('exist');
+  });
+
+  it('Unsppored introduced date format provided', () => {
+    // Create new computer
+    newComputerPage.fillIntroduced('01 Jan 2202').clickOnCreateThisComputerButton();
+    newComputerPage.introducedError().should('exist');
+  });
+
+  it('Correct date but invalid month and day year introduced date provided', () => {
+    // Create new computer
+    newComputerPage.fillIntroduced('2020-22-36').clickOnCreateThisComputerButton();
     newComputerPage.introducedError().should('exist');
   });
 
@@ -24,5 +36,16 @@ describe('Try to create computer with empty values and invalid date formats', ()
     // Create new computer
     newComputerPage.fillDiscontinued('dddd').clickOnCreateThisComputerButton();
     newComputerPage.discontinuedError().should('exist');
+  });
+
+  it('Unsppored discontinued date format provided', () => {
+    // Create new computer
+    newComputerPage.fillDiscontinued('01 Jan 2202').clickOnCreateThisComputerButton();
+    newComputerPage.introducedError().should('exist');
+  });
+  it('Correct date but invalid month and day year introduced date provided', () => {
+    // Create new computer
+    newComputerPage.fillDiscontinued('2020-22-36').clickOnCreateThisComputerButton();
+    newComputerPage.introducedError().should('exist');
   });
 });

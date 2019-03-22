@@ -4,7 +4,7 @@ const Constants = require('../helpers/Constants');
 const moment = require('moment');
 const addEditFormat = 'YYYY-MM-DD';
 
-describe.skip('Pagination should be displayed if more than 10 computers tests', () => {
+describe('Pagination should be displayed if more than 10 computers tests', () => {
   const searchString = `computer-${new Date().getTime()}`;
   const computerPage = new ComputerPage();
   const newComputerPage = new NewComputersPage();
@@ -70,7 +70,7 @@ describe.skip('Pagination should be displayed if more than 10 computers tests', 
   });
 });
 
-describe('Pagination should not displayed if less than 10 computer tests', () => {
+describe('Pagination should displayed if less than 10 computer but buttons should be disabled tests', () => {
   const searchString = `computer-${new Date().getTime()}`;
   const computerPage = new ComputerPage();
   const newComputerPage = new NewComputersPage();

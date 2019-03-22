@@ -1,0 +1,8 @@
+{
+  "TC001": {
+    "introduced": "2017-11-20",
+    "discontinued": "2020-11-20",
+    "company": "Apple Inc.",
+    "description": "User should be able to add test with company Apple Inc."
+  }
+}

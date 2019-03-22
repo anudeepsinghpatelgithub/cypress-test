@@ -18,3 +18,8 @@ This repo contains e2e framework using cypress
 
 Reports can be found after running the test at location
 `mochawesome-report/mochawesome.html`
+
+## Test cases:
+
+Test cases can be found in root location of project, file name is:
+`TestCases.xlsx`

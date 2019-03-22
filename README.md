@@ -16,5 +16,5 @@ This repo contains e2e framework using cypress
 
 ## Reports:
 
-Reports can be found after running the test as location
+Reports can be found after running the test at location
 `mochawesome-report/mochawesome.html`

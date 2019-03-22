@@ -6,3 +6,4 @@ cypress/videos/
 cypress/integration
 cypress/screenshots/
 cypress/
+mochawesome-report/

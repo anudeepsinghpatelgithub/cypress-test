@@ -13,3 +13,8 @@ This repo contains e2e framework using cypress
 3. `npm install`
 4. For headless mode: `num run test:ci`
 5. for now mode run `num run test`
+
+## Reports:
+
+Reports can be found after running the test as location
+`mochawesome-report/mochawesome.html`
